@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -31,25 +30,30 @@ public class UserService {
 
     // Atualizar usuário existente
     public User updateUser(Long id, User updatedUser) {
-        // Verifica se o usuário existe no banco de dados
         return userRepository.findById(id)
                 .map(existingUser -> {
-                    // Verificar se os valores de updatedUser não são nulos antes de definir
                     if (updatedUser.getName() != null) {
                         existingUser.setName(updatedUser.getName());
                     }
                     if (updatedUser.getEmail() != null) {
                         existingUser.setEmail(updatedUser.getEmail());
                     }
-                    // Atualize outros campos conforme necessário
                     return userRepository.save(existingUser);
                 })
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
-
     // Deletar usuário
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    // **NOVO** - Validar usuário e senha
+    public boolean validateUser(String username, String password) {
+        // Busque o usuário pelo nome
+        User user = userRepository.findByName(username);
+
+        // Verifique se o usuário foi encontrado e a senha coincide
+        return user != null && user.getPassword().equals(password);
     }
 }

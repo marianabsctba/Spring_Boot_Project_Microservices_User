@@ -12,14 +12,16 @@ public class User {
 
     private String name;
     private String email;
+    private String password; // Adicionar o campo de senha
 
     // Construtor padrão
-    public User() {}
+    public User(String janeDoe, String mail) {}
 
     // Construtor com parâmetros
-    public User(String name, String email) {
+    public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
+        this.password = password; // Inicializa a senha
     }
 
     // Getters e Setters
@@ -45,5 +47,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password; // Adicionar getter para senha
+    }
+
+    public void setPassword(String password) {
+        this.password = password; // Adicionar setter para senha
     }
 }

@@ -1,4 +1,5 @@
 package infnet.edu.microservice_users;
+
 import infnet.edu.microservice_users.model.User;
 import infnet.edu.microservice_users.repository.UserRepository;
 import infnet.edu.microservice_users.service.UserService;
@@ -51,6 +52,7 @@ public class UserServiceTest {
         User user = userService.getUserById(userId);
         assertNotNull(user);
         assertEquals("John Doe", user.getName());
+        assertEquals("john.doe@example.com", user.getEmail());
         verify(userRepository, times(1)).findById(userId);
     }
 
@@ -79,6 +81,7 @@ public class UserServiceTest {
         User createdUser = userService.addUser(newUser);
         assertNotNull(createdUser);
         assertEquals("New User", createdUser.getName());
+        assertEquals("new.user@example.com", createdUser.getEmail());
         verify(userRepository, times(1)).save(newUser);
     }
 
