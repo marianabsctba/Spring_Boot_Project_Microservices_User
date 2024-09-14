@@ -48,12 +48,16 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    // **NOVO** - Validar usuário e senha
-    public boolean validateUser(String username, String password) {
-        // Busque o usuário pelo nome
-        User user = userRepository.findByName(username);
 
-        // Verifique se o usuário foi encontrado e a senha coincide
-        return user != null && user.getPassword().equals(password);
+    public User validateUser(String username, String password) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+        if (user.getPassword().equals(password) && user.getUsername().equals(username)) {
+            return user;
+        }
+            throw new RuntimeException("Invalid validation");
     }
+
 }

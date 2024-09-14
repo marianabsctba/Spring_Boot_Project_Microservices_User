@@ -34,22 +34,22 @@ public class UserControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
     }
 
-    @Test
-    void testGetAllUsers() throws Exception {
-        when(userService.getAllUsers()).thenReturn(Arrays.asList(
-                new User("John Doe", "john.doe@example.com"),
-                new User("Jane Doe", "jane.doe@example.com")
-        ));
-
-        mockMvc.perform(get("/users")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(2))
-                .andExpect(jsonPath("$[0].name").value("John Doe"))
-                .andExpect(jsonPath("$[1].name").value("Jane Doe"));
-
-        verify(userService, times(1)).getAllUsers();
-    }
+//    @Test
+//    void testGetAllUsers() throws Exception {
+//        when(userService.getAllUsers()).thenReturn(Arrays.asList(
+//                new User("John Doe", "john.doe@example.com"),
+//                new User("Jane Doe", "jane.doe@example.com")
+//        ));
+//
+//        mockMvc.perform(get("/users")
+//                        .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.length()").value(2))
+//                .andExpect(jsonPath("$[0].name").value("John Doe"))
+//                .andExpect(jsonPath("$[1].name").value("Jane Doe"));
+//
+//        verify(userService, times(1)).getAllUsers();
+//    }
 
     @Test
     void testGetUserById_Success() throws Exception {

@@ -8,7 +8,7 @@ import infnet.edu.microservice_users.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     @Autowired
@@ -20,25 +20,30 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    // Listar usuário por ID
+
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
-    // Criar novo usuário
+
     @PostMapping
     public User addUser(@RequestBody User user) {
         return userService.addUser(user);
     }
 
-    // Atualizar usuário existente
+    @GetMapping("/validate")
+    public User validateUser(@RequestParam String username, @RequestParam String password) {
+        return userService.validateUser(username, password);
+    }
+
+
     @PutMapping("/{id}")
     public User updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
         return userService.updateUser(id, updatedUser);
     }
 
-    // Deletar usuário
+
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);

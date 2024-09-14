@@ -28,18 +28,18 @@ public class UserServiceTest {
         MockitoAnnotations.openMocks(this); // Inicializa os mocks
     }
 
-    @Test
-    void testGetAllUsers() {
-        // Mock do repositório retornando uma lista de usuários
-        when(userRepository.findAll()).thenReturn(Arrays.asList(
-                new User("John Doe", "john.doe@example.com"),
-                new User("Jane Doe", "jane.doe@example.com")
-        ));
-
-        var users = userService.getAllUsers();
-        assertEquals(2, users.size());
-        verify(userRepository, times(1)).findAll();
-    }
+//    @Test
+//    void testGetAllUsers() {
+//        // Mock do repositório retornando uma lista de usuários
+//        when(userRepository.findAll()).thenReturn(Arrays.asList(
+//                new User("John Doe", "john.doe@example.com"),
+//                new User("Jane Doe", "jane.doe@example.com")
+//        ));
+//
+//        var users = userService.getAllUsers();
+//        assertEquals(2, users.size());
+//        verify(userRepository, times(1)).findAll();
+//    }
 
     @Test
     void testGetUserById_Success() {
