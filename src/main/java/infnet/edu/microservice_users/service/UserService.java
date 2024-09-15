@@ -13,22 +13,21 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    // Listar todos os usuários
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    // Buscar usuário por ID
+
     public User getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    // Criar novo usuário
+
     public User addUser(User user) {
         return userRepository.save(user);
     }
 
-    // Atualizar usuário existente
+
     public User updateUser(Long id, User updatedUser) {
         return userRepository.findById(id)
                 .map(existingUser -> {
@@ -43,7 +42,6 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
-    // Deletar usuário
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
