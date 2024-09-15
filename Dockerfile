@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:17-jdk
 LABEL authors="raphael.costa/Mariana.Sukevicz"
 
 VOLUME /tmp
