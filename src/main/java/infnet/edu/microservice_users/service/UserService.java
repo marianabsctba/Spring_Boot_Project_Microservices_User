@@ -29,17 +29,15 @@ public class UserService {
 
 
     public User updateUser(Long id, User updatedUser) {
-        return userRepository.findById(id)
-                .map(existingUser -> {
-                    if (updatedUser.getName() != null) {
-                        existingUser.setName(updatedUser.getName());
-                    }
-                    if (updatedUser.getEmail() != null) {
-                        existingUser.setEmail(updatedUser.getEmail());
-                    }
-                    return userRepository.save(existingUser);
-                })
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepository.findById(id).orElseThrow(()-> new RuntimeException(("Usuário não encontrado!")));
+
+        user.setName(updatedUser.getName());
+        user.setEmail(updatedUser.getEmail());
+        user.setPassword(updatedUser.getPassword());
+        user.setUsername(updatedUser.getUsername());
+
+        return userRepository.save(user);
+
     }
 
     public void deleteUser(Long id) {
