@@ -2,8 +2,11 @@ package infnet.edu.microservice_users.service;
 
 import infnet.edu.microservice_users.model.User;
 import infnet.edu.microservice_users.repository.UserRepository;
+import infnet.edu.microservice_users.util.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
@@ -13,13 +16,21 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    Logger logger= LogManager.getLogger(UserService.class);
+
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        logger.info("getAllUsers");
+        List<User> users = userRepository.findAll();
+        logger.info("UserService:getAllUsers: {}", Mapper.mapToJsonString(users));
+        return users;
     }
 
 
     public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
+        logger.info("getUserById");
+        User user =userRepository.findById(id).orElse(null);
+        logger.info("UserService:getUserById: {}", Mapper.mapToJsonString(user));
+        return user;
     }
 
 
