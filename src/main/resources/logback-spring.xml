@@ -1,0 +1,15 @@
+<configuration>
+    <appender name="PAPERTRAIL" class="ch.qos.logback.classic.net.SyslogAppender">
+        <syslogHost>logs3.papertrailapp.com</syslogHost>
+        <port>13127</port>
+        <suffixPattern>%logger{35} - %msg%n</suffixPattern>
+        <facility>USER</facility>
+        <stackTracePattern>#%thread [%file:%line] %msg</stackTracePattern>
+        <throwableExcluded>false</throwableExcluded>
+        <charset>UTF-8</charset>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="PAPERTRAIL" />
+    </root>
+</configuration>
