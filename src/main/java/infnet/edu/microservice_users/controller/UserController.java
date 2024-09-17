@@ -11,10 +11,6 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f5a83cbadfba81918ffa623228b9eb749b5ff006
     @Autowired
     private UserService userService;
 
@@ -40,19 +36,11 @@ public class UserController {
 
     @PutMapping("/{id}")
     public User updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
-<<<<<<< HEAD
-=======
-
->>>>>>> f5a83cbadfba81918ffa623228b9eb749b5ff006
         return userService.updateUser(id, updatedUser);
     }
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
-<<<<<<< HEAD
-=======
-
->>>>>>> f5a83cbadfba81918ffa623228b9eb749b5ff006
         userService.deleteUser(id);
     }
 }

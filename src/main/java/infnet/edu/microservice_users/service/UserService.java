@@ -2,16 +2,10 @@ package infnet.edu.microservice_users.service;
 
 import infnet.edu.microservice_users.model.User;
 import infnet.edu.microservice_users.repository.UserRepository;
-import infnet.edu.microservice_users.util.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-=======
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
->>>>>>> f5a83cbadfba81918ffa623228b9eb749b5ff006
 
 import java.util.List;
 
@@ -23,33 +17,18 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    Logger logger= LogManager.getLogger(UserService.class);
-
     public List<User> getAllUsers() {
-<<<<<<< HEAD
         logger.info("Fetching all users");
         return userRepository.findAll();
-=======
-        logger.info("getAllUsers");
-        List<User> users = userRepository.findAll();
-        logger.info("UserService:getAllUsers: {}", Mapper.mapToJsonString(users));
-        return users;
->>>>>>> f5a83cbadfba81918ffa623228b9eb749b5ff006
     }
 
     public User getUserById(Long id) {
-<<<<<<< HEAD
         User user = userRepository.findById(id).orElse(null);
         if (user == null) {
             logger.error("User with id {} not found", id);
         } else {
             logger.info("User with id {} found", id);
         }
-=======
-        logger.info("getUserById");
-        User user =userRepository.findById(id).orElse(null);
-        logger.info("UserService:getUserById: {}", Mapper.mapToJsonString(user));
->>>>>>> f5a83cbadfba81918ffa623228b9eb749b5ff006
         return user;
     }
 
